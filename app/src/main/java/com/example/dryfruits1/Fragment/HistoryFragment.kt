@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dryfruits1.R
+import com.example.dryfruits1.adapter.BuyAgainAdapter
+import com.example.dryfruits1.databinding.FragmentHistoryBinding
 
 
 class HistoryFragment : Fragment() {
-
-
+    private lateinit var binding: FragmentHistoryBinding
+    private lateinit var buyAgainAdapter: BuyAgainAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,9 +24,18 @@ class HistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history, container, false)
+        binding = FragmentHistoryBinding. inflate (layoutInflater, container ,false)
+        setupRecyclerView()
+        return binding.root
     }
-
+    private fun setupRecyclerView(){
+        val buyAgainFoodName = arrayListOf("Food 1","Food 1","Food 1")
+        val buyAgainFoodPrice= arrayListOf("Rs.500","Rs.500","Rs.500")
+        val buyAgainFoodImage = arrayListOf(R.drawable.menu1,R.drawable.menu2,R.drawable.menu3)
+        buyAgainAdapter= BuyAgainAdapter(buyAgainFoodName,buyAgainFoodPrice,buyAgainFoodImage)
+        binding.BuyAgainRecyclerView.adapter=buyAgainAdapter
+        binding.BuyAgainRecyclerView.layoutManager=LinearLayoutManager(requireContext())
+    }
     companion object {
 
     }

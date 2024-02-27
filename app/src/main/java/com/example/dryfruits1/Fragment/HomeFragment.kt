@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +28,10 @@ class HomeFragment : Fragment() {
     ): View{
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater,container,false)
+        binding.viewAllMenu.setOnClickListener{
+            val bottomSheetDialog = MenuBottomSheetFragment()
+            bottomSheetDialog.show(parentFragmentManager,"Test")
+        }
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,7 +56,7 @@ class HomeFragment : Fragment() {
             }
         })
         val foodName = listOf("Cashews","Almonds","Pistachios","Peanuts")
-        val Price= listOf("Rs.500","Rs.500","Rs.500","Rs.500")
+        val Price= listOf("Rs.965","Rs.959","Rs.532","Rs.554")
         val popularFoodImages = listOf(R.drawable.menu1,R.drawable.menu2,R.drawable.menu3,R.drawable.menu4)
         val adapter = PopularAdapter(foodName,Price,popularFoodImages)
         binding.PopularRecyclerView.layoutManager=LinearLayoutManager(requireContext())
