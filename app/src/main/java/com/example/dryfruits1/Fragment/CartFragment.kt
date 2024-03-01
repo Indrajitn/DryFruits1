@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.dryfruits1.CongratsBottomSheet
 import com.example.dryfruits1.PayOutActivity
 import com.example.dryfruits1.R
 import com.example.dryfruits1.adapter.CartAdapter
@@ -41,6 +42,8 @@ class CartFragment : Fragment() {
             val intent = Intent(requireContext(),PayOutActivity::class.java)
             startActivity(intent)
         }
+
+
         return binding.root
     }
 
